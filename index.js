@@ -1,6 +1,9 @@
 // подключаем модуль colors, который мы будем использовать в подкраске нашего консольного вывода
 const colors = require('colors/safe');
 
+// подключаем модуль определения простых чисел
+const isPrime = require('./isPrime');
+
 // извлекаем число начала диапазона из введённых в консоль данных
 const start = parseInt(process.argv[2]);
 
@@ -44,18 +47,4 @@ for (let num in primeNumbers){
             continue;
         }
     }
-}
-
-/**
- * Функция проверяет является ли число простым.
- * @param {int} number Число, которое проверяем.
- * @returns {boolean} Вернет true, если число простое, иначе false.
- */
-function isPrime(number) {
-    let start = 2;
-    const limit = Math.sqrt(number);
-    while (start <= limit) {
-        if (number % start++ < 1) return false;
-    }
-    return number > 1;
 }
