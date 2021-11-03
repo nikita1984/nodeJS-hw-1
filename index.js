@@ -1,19 +1,16 @@
 // подключаем модуль colors, который мы будем использовать в подкраске нашего консольного вывода
-let colors = require('colors/safe');
+const colors = require('colors/safe');
 
-// получаем массив с введёнными числами
-let input = process.argv;
+// извлекаем число начала диапазона из введённых в консоль данных
+const start = parseInt(process.argv[2]);
 
-// извлекаем число начала диапазона
-let start = parseInt(input.splice(2, 1), 10);
+// извлекаем число окончания диапазона из введённых в консоль данных
+const end = parseInt(process.argv[3]);
 
-// извлекаем число окончания диапазона
-let end = parseInt(input.splice(2, 1), 10);
-
-// Если аргумент, переданный при запуске, то пробрасываем ошибку и завершаем программу
+// Если аргумент, переданный при запуске не является числом, то завершаем программу с ошибкой
 if (isNaN(start) || isNaN(end)){
     console.error("Ошибка: В качестве обоих параметров должны быть числа");
-    process.exit(0);
+    process.exit(1);
 }
 
 // создём массив для записи простых чисел
@@ -49,10 +46,10 @@ for (let num in primeNumbers){
     }
 }
 
-/**TODO: написать js-doc
- * 
- * @param {*} number 
- * @returns 
+/**
+ * Функция проверяет является ли число простым.
+ * @param {int} number Число, которое проверяем.
+ * @returns {boolean} Вернет true, если число простое, иначе false.
  */
 function isPrime(number) {
     let start = 2;
